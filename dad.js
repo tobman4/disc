@@ -1,19 +1,19 @@
 const { type } = require("os");
 
-class Dad {
+function Dad() {
+    
+    this.reg_hungry = new RegExp("I['|´]M (.{1,})","i");
 
-    constructor() {
-        this.reg_hungry = new RegExp("I['|´]M (.{1,})");
-    }
-
-    static test_msg(msg) {
-        msg = msg.toUpperCase()
+    this.test_msg = (msg) => {
         let res = msg.match(this.reg_hungry);
-        if(res.length == 2) {
-            return res[1];
-        } else {
-            return null;
+        if(res) {
+            return "Hi " + res[1] + " i'm dad.";
+        } else if(msg.toUpperCase() == "HAHA") {
+            return "GG\nWas funn tho :)"
         }
+
     }
 }
 
+
+module.exports = new Dad();
